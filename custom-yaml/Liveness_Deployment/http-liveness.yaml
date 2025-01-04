@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
   - name: liveness
-    image: spurin/liveness
+    image: registry.k8s.io/e2e-test-images/agnhost:2.40
     args:
     - /server
     livenessProbe:
