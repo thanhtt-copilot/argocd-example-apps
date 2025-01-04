@@ -19,7 +19,7 @@ spec:
         - liveness
         livenessProbe:
           httpGet:
-            path: /healthz
+            path: /healthz # A simple server that is alive for 10 seconds, then reports unhealthy for the rest of its (hopefully) short existence
             port: 8080
             httpHeaders:
             - name: Custom-Header
