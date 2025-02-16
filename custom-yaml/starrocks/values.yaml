@@ -130,7 +130,7 @@ starrocks:
     # This is because Argo CD support helm like this: helm template <options> | kubectl apply -f -. If isInstall is true, the
     # initPassword job will be executed every time you run the command.
     # see https://github.com/argoproj/argo-cd/discussions/7496#discussioncomment-1609267 for more information
-    isInstall: true
+    isInstall: false
     password: ""
     # The secret name that contains password, the key of the secret is "password", and you should create it first.
     passwordSecret: starrocks-root-pass
@@ -293,7 +293,7 @@ starrocks:
     # the service type refer https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
     service:
       # the fe service type, only supported ClusterIP, NodePort, LoadBalancer
-      type: "NodePort"
+      type: "ClusterIP"
       # the loadBalancerIP for static ip config when the type=LoadBalancer and loadbalancerIp is not empty.
       loadbalancerIP: ""
       # add annotations for fe service.
