@@ -448,6 +448,12 @@ starrocks:
       edit_log_port = 9010
       mysql_service_nio_enabled = true
       sys_log_level = DEBUG
+
+      # config for shared-data mode
+      run_mode = shared_data
+      cloud_native_meta_port = 6090
+      # Whether volume can be created from conf. If it is enabled, a builtin storage volume may be created.
+      enable_load_volume_from_conf = false
     # A map object for setting the config. When configyaml is set, to non-empty, the configs in configyaml will take
     # precedence and values in config field will be discarded.
     # Note: When using configyaml, the number needs to be quoted to avoid being converted to scientific notiation.
