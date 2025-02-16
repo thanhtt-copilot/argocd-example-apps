@@ -448,7 +448,6 @@ starrocks:
       edit_log_port = 9010
       mysql_service_nio_enabled = true
       sys_log_level = DEBUG
-
       # config for shared-data mode
       run_mode = shared_data
       cloud_native_meta_port = 6090
