@@ -389,8 +389,8 @@ starrocks:
         memory: 4Gi
       # If you want to remove one resource limit, e.g. cpu, you can it to cpu: "unlimited".
       limits:
-        cpu: 2
-        memory: 8Gi
+        cpu: 4
+        memory: 16Gi
     # fe storageSpec for persistent metadata.
     # Note: Once set, the following fields will not be allowed to be modified.
     storageSpec:
@@ -408,7 +408,7 @@ starrocks:
       storageClassName: ""
       # the persistent volume size for data.
       # fe container stop running if the disk free space which the fe meta directory residents, is less than 5Gi.
-      storageSize: 10Gi
+      storageSize: 30Gi
       # If storageMountPath is empty, the storageMountPath will be set to /opt/starrocks/fe/meta.
       storageMountPath: /opt/starrocks/fe/meta
       # If not set will use the value of the storageClassName field.
@@ -451,7 +451,7 @@ starrocks:
       run_mode = shared_data
       cloud_native_meta_port = 6090
       cloud_native_storage_type = S3
-      aws_s3_path = s3://starrocks-meta
+      aws_s3_path = s3://demo-starrocks
       aws_s3_region = ap-southeast-1
       aws_s3_endpoint = https://s3.ap-southeast-1.amazonaws.com
       aws_s3_use_aws_sdk_default_behavior = true
