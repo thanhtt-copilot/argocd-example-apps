@@ -180,12 +180,12 @@ starrocks:
     # the name of starrockscluster cluster, if not set, the value of nameOverride fields will be used.
     name: ""
     # the namespace of starrockscluster cluster, if not set, the release namespace will be used.
-    namespace: ""
+    namespace: "star"
     # annotations for starrocks cluster.
     annotations: {}
     # specify the cn deploy or not.
-    enabledBe: true
-    enabledCn: false
+    enabledBe: false
+    enabledCn: true
     # componentValues field is used to define values for all starrocks cluster components, including starrocksFESpec,
     # starrocksBeSpec, starrocksCnSpec, not including starrocksFeProxySpec. So that you do not need to modify them in
     # their own spec.
@@ -410,7 +410,7 @@ starrocks:
       # fe container stop running if the disk free space which the fe meta directory residents, is less than 5Gi.
       storageSize: 10Gi
       # If storageMountPath is empty, the storageMountPath will be set to /opt/starrocks/fe/meta.
-      storageMountPath: ""
+      storageMountPath: /opt/starrocks/fe/meta
       # If not set will use the value of the storageClassName field.
       logStorageClassName: ""
       # Setting this parameter can persist log storage, and the mount path is /opt/starrocks/fe/log.
@@ -421,7 +421,7 @@ starrocks:
       #    dump_log_dir = xxx
       #    sys_log_dir = xxx
       #    audit_log_dir = xxx
-      logMountPath: ""
+      logMountPath: /opt/starrocks/fe/log
     # mount emptyDir volumes if necessary.
     # Note: please use storageSpec field for persistent metadata and log.
     emptyDirs: []
@@ -447,7 +447,7 @@ starrocks:
       query_port = 9030
       edit_log_port = 9010
       mysql_service_nio_enabled = true
-      sys_log_level = INFO
+      sys_log_level = DEBUG
     # A map object for setting the config. When configyaml is set, to non-empty, the configs in configyaml will take
     # precedence and values in config field will be discarded.
     # Note: When using configyaml, the number needs to be quoted to avoid being converted to scientific notiation.
@@ -726,7 +726,7 @@ starrocks:
       #   You must add in config the following configuration: storage_root_path = /opt/starrocks/cn/storage0;/opt/starrocks/cn/storage1;...
       storageCount: 1
       # see the comment of storageCount for the usage of storageMountPath.
-      storageMountPath: ""
+      storageMountPath: /opt/starrocks/cn/storage
       # If not set will use the value of the storageClassName field.
       logStorageClassName: ""
       # the storage size of persistent volume for log, and the mount path is /opt/starrocks/cn/log.
@@ -734,7 +734,7 @@ starrocks:
       logStorageSize: 20Gi
       # If logMountPath is empty, the logMountPath will be set to /opt/starrocks/cn/log.
       # If logMountPath is not /opt/starrocks/cn/log, you must add in config the following configuration: sys_log_dir = xxx.
-      logMountPath: ""
+      logMountPath: /opt/starrocks/cn/log
       # If not set will use the value of the storageClassName field.
       spillStorageClassName: ""
       # Setting this parameter can persist spill storage, and the mount path is /opt/starrocks/cn/spill.
@@ -768,7 +768,7 @@ starrocks:
     #   2. be_http_port instead of webserver_port, but the webserver_port is still supported.
     # In order to avoid the impact of the change on the user's deployment, we still use the old configuration.
     config: |
-      sys_log_level = INFO
+      sys_log_level = DEBUG
       # ports for admin, web, heartbeat service
       thrift_port = 9060
       webserver_port = 8040
@@ -1021,7 +1021,7 @@ starrocks:
       #   You must add in config the following configuration: storage_root_path = /opt/starrocks/be/storage0;/opt/starrocks/be/storage1;...
       storageCount: 1
       # see the comment of storageCount for the usage of storageMountPath.
-      storageMountPath: ""
+      storageMountPath: /opt/starrocks/be/storage
       # If not set will use the value of the storageClassName field.
       logStorageClassName: ""
       # Setting this parameter can persist log storage, and the mount path is /opt/starrocks/be/log.
@@ -1029,7 +1029,7 @@ starrocks:
       logStorageSize: 20Gi
       # If logMountPath is empty, the logMountPath will be set to /opt/starrocks/be/log.
       # If logMountPath is not /opt/starrocks/be/log, you must add in config the following configuration: sys_log_dir = xxx.
-      logMountPath: ""
+      logMountPath: /opt/starrocks/be/log
       # If not set will use the value of the storageClassName field.
       spillStorageClassName: ""
       # Setting this parameter can persist spill storage, and the mount path is /opt/starrocks/be/spill.
@@ -1063,7 +1063,7 @@ starrocks:
       webserver_port = 8040
       heartbeat_service_port = 9050
       brpc_port = 8060
-      sys_log_level = INFO
+      sys_log_level = DEBUG
       default_rowset_type = beta
     # A map object for setting the config. When configyaml is set, to non-empty, the configs in configyaml will take
     # precedence and values in config field will be discarded.
