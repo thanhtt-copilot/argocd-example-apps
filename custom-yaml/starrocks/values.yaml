@@ -180,7 +180,7 @@ starrocks:
     # the name of starrockscluster cluster, if not set, the value of nameOverride fields will be used.
     name: ""
     # the namespace of starrockscluster cluster, if not set, the release namespace will be used.
-    namespace: "star"
+    namespace: ""
     # annotations for starrocks cluster.
     annotations: {}
     # specify the cn deploy or not.
@@ -539,7 +539,7 @@ starrocks:
     # When autoscaling of the CN statefulset is used the `replicas` field is set to null
     # by the operator, and autoscaling is controlled by Horizontal Pod Autoscaling (HPA).
     # You should only uncomment and set the `replicas` field if autoscaling is disabled.
-    # replicas: 1
+    replicas: 3
     image:
       # image sliced by "repository:tag"
       repository: starrocks/cn-ubuntu
