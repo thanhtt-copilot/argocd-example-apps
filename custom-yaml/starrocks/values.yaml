@@ -258,7 +258,7 @@ starrocks:
   # spec to deploy fe.
   starrocksFESpec:
     # number of replicas to deploy for a fe statefulset.
-    replicas: 1
+    replicas: 3
     image:
       # image sliced by "repository:tag"
       repository: starrocks/fe-ubuntu
@@ -385,11 +385,11 @@ starrocks:
     # resources for fe pod.
     resources:
       requests:
-        cpu: 2
+        cpu: 1
         memory: 4Gi
       # If you want to remove one resource limit, e.g. cpu, you can it to cpu: "unlimited".
       limits:
-        cpu: 2
+        cpu: 1
         memory: 16Gi
     # fe storageSpec for persistent metadata.
     # Note: Once set, the following fields will not be allowed to be modified.
