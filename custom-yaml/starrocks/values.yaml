@@ -453,11 +453,7 @@ starrocks:
       cloud_native_storage_type = S3
       aws_s3_path = s3://demo-starrocks
       aws_s3_region = ap-southeast-1
-<<<<<<< HEAD
       enable_load_volume_from_conf = false
-=======
-      enable_load_volume_from_conf = true
->>>>>>> 7d3c14c (OK)
     # A map object for setting the config. When configyaml is set, to non-empty, the configs in configyaml will take
     # precedence and values in config field will be discarded.
     # Note: When using configyaml, the number needs to be quoted to avoid being converted to scientific notiation.
