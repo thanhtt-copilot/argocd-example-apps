@@ -1197,7 +1197,7 @@ starrocks:
     service:
       # the fe proxy service type, only supported ClusterIP, NodePort, LoadBalancer
       # default ClusterIP
-      type: NodePort
+      type: ClusterIP
       # the loadBalancerIP for static ip config when the type=LoadBalancer and loadbalancerIp is not empty.
       loadbalancerIP: ""
       # add annotations for fe service.
