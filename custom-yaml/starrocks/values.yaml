@@ -125,7 +125,7 @@ starrocks:
   #       you should also not set the initPassword.
   #       If you install StarRocks using helm install and set the initPassword, please always retain the configuration of initPassword.
   initPassword:
-    enabled: false
+    enabled: true
     # Note: If you are using Argo CD to deploy the StarRocks cluster, you must set isInstall to false after the first installation.
     # This is because Argo CD support helm like this: helm template <options> | kubectl apply -f -. If isInstall is true, the
     # initPassword job will be executed every time you run the command.
@@ -133,7 +133,7 @@ starrocks:
     isInstall: true
     password: ""
     # The secret name that contains password, the key of the secret is "password", and you should create it first.
-    passwordSecret: ""
+    passwordSecret: starrocks-root-pass
     # The image of the initPassword job, if it is not set, the FE image will be used.
     # see https://github.com/StarRocks/starrocks-kubernetes-operator/issues/453 for why we need to set the image.
     image: ""
@@ -293,7 +293,7 @@ starrocks:
     # the service type refer https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
     service:
       # the fe service type, only supported ClusterIP, NodePort, LoadBalancer
-      type: "ClusterIP"
+      type: "NodePort"
       # the loadBalancerIP for static ip config when the type=LoadBalancer and loadbalancerIp is not empty.
       loadbalancerIP: ""
       # add annotations for fe service.
@@ -385,11 +385,11 @@ starrocks:
     # resources for fe pod.
     resources:
       requests:
-        cpu: 2
+        cpu: 1
         memory: 4Gi
       # If you want to remove one resource limit, e.g. cpu, you can it to cpu: "unlimited".
       limits:
-        cpu: 2
+        cpu: 1
         memory: 8Gi
     # fe storageSpec for persistent metadata.
     # Note: Once set, the following fields will not be allowed to be modified.
@@ -692,11 +692,11 @@ starrocks:
     # define resources requests and limits for cn pods.
     resources:
       requests:
-        cpu: 2
+        cpu: 1
         memory: 8Gi
       # If you want to remove one resource limit, e.g. cpu, you can it to cpu: "unlimited".
       limits:
-        cpu: 2
+        cpu: 1
         memory: 8Gi
     # specify storageclass name and request size.
     # Note: Once set, the following fields will not be allowed to be modified.
@@ -862,7 +862,7 @@ starrocks:
   # spec for component be, provide storage and compute function.
   starrocksBeSpec:
     # number of replicas to deploy.
-    replicas: 1
+    replicas: 3
     image:
       # image sliced by "repository:tag"
       repository: starrocks/be-ubuntu
@@ -1178,7 +1178,7 @@ starrocks:
   # specify the fe proxy deploy or not.
   starrocksFeProxySpec:
     # specify the fe proxy deploy or not.
-    enabled: false
+    enabled: true
     replicas: 1
     imagePullPolicy: IfNotPresent
     # default nginx:1.24.0
@@ -1197,7 +1197,7 @@ starrocks:
     service:
       # the fe proxy service type, only supported ClusterIP, NodePort, LoadBalancer
       # default ClusterIP
-      type: ClusterIP
+      type: NodePort
       # the loadBalancerIP for static ip config when the type=LoadBalancer and loadbalancerIp is not empty.
       loadbalancerIP: ""
       # add annotations for fe service.
