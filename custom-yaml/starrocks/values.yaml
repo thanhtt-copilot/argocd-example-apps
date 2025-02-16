@@ -385,7 +385,7 @@ starrocks:
     # resources for fe pod.
     resources:
       requests:
-        cpu: 2
+        cpu: 1
         memory: 4Gi
       # If you want to remove one resource limit, e.g. cpu, you can it to cpu: "unlimited".
       limits:
