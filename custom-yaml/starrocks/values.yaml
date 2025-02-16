@@ -714,7 +714,7 @@ starrocks:
       # Note: Because hostPath field is not supported here, hostPath is not allowed to be set in storageClassName.
       storageClassName: ""
       # the storage size of per persistent volume for data.
-      storageSize: 1Ti
+      storageSize: 20Gi
       # the number of persistent volumes for data.
       # if storageCount == 1
       #   the storageMountPath field is used to specify the mount path of the persistent volume. If storageMountPath is empty,
@@ -1009,7 +1009,7 @@ starrocks:
       # Note: Because hostPath field is not supported here, hostPath is not allowed to be set in storageClassName.
       storageClassName: ""
       # the storage size of per persistent volume for data.
-      storageSize: 1Ti
+      storageSize: 20Gi
       # the number of persistent volumes for data.
       # if storageCount == 1
       #   the storageMountPath field is used to specify the mount path of the persistent volume. If storageMountPath is empty,
